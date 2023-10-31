@@ -20,3 +20,17 @@ function Inserir($escolha)
     $sql = $pdo->prepare("INSERT INTO avaliacao VALUES (null,?,?)");
     $sql->execute(array($escolha, $data));
 }
+
+    // FUNÇÃO PARA CONSULTAR BANCO DE DADOS 
+
+    function Consultar($opcao) {
+        $pdo = $GLOBALS["pdo"];
+        $sql= $pdo->prepare("SELECT COUNT(*) FROM avaliacao WHERE escolha = '$opcao'");
+        $sql->execute();
+        $retorno = $sql->fetchAll();
+
+    
+    foreach ($retorno as $key => $value){
+        echo $value[ 'COUNT(*)'];
+    }
+}

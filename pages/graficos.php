@@ -1,4 +1,5 @@
 <?php include 'cabecalho.php'?>
+<?php include("../bd/conect.php")?>
 
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -15,17 +16,17 @@
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['Opções', 'votos'],
+          ['Ótimo',    <?php Consultar("otimo")?>],
+          ['Regular',     <?php Consultar("regular")?>],
+          ['Ruim',  <?php Consultar("ruim")?>],
+          
         ]);
 
         var options = {
-          title: 'My Daily Activities'
-        };
+          title: 'Resultados',
+          is3D:true ,
+          };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
